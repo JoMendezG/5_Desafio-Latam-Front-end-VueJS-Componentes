@@ -1,29 +1,8 @@
 # 5_3-layout-vuetify
 
-## Project setup
-```
-npm install
-```
+#Descripción
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Para el siguiente desafío se debe seleccionar uno de los frameworks de UI y escribir el
+código necesario para producir el siguiente layout:
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![img1](../src/ReadmeIMG/1.jpg)
