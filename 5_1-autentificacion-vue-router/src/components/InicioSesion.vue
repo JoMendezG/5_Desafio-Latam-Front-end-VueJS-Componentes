@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h3>Iniciar Sesióon</h3>
+  <div class="LogIn" :class="{ propShowLogIn }">
+    <h3>Iniciar Sesión</h3>
     <form class="form-floating">
       <input
         type="email"
@@ -25,16 +25,16 @@
     <button type="button" class="btn btn-warning">Iniciar Sesión</button>
     <p class="small fw-bold mt-2 pt-1 mb-0">
       ¿No tienes una cuenta?
-      <a class="link-info" @click="registrarPage()">Registrate</a>
+      <a class="link-info" href="">Registrate</a>
     </p>
   </div>
 </template>
 
 <script>
 export default {
-  methods: {
-    registrarPage() {},
-  },
+  props: ["propShowLogIn"],
+
+  methods: {},
 };
 </script>
 
@@ -53,5 +53,16 @@ button {
 
 h3 {
   font-weight: normal;
+}
+
+.LogIn {
+  display: none;
+  opacity: 0;
+  transition: all 1s ease;
+}
+
+.LogIn.propShowLogIn {
+  display: block;
+  opacity: 1;
 }
 </style>

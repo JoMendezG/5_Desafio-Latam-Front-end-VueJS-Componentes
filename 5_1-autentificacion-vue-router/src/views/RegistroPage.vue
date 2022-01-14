@@ -5,8 +5,12 @@
     </div>
 
     <div class="der">
-      <Registro></Registro>
-      <LogIn></LogIn>
+      <!-- Señalo que mi Registro tendrá una prop llamada "propShowRegistro" que almacena la booleana mostrarRegistro -->
+      <Registro :propShowRegistro="mostrarRegistro"></Registro>
+      <LogIn
+        :propShowLogIn="mostrarLogIn"
+        :propMetodo="mostrarFromulario"
+      ></LogIn>
     </div>
   </div>
 </template>
@@ -15,9 +19,24 @@
 import LogIn from "../components/InicioSesion.vue";
 import Registro from "../components/RegistrarUsuario.vue";
 export default {
+  data() {
+    return {
+      // Creo una variable booleana para mostrar el logIn, este será verdadero porque quiero que parta activado
+      mostrarLogIn: true,
+      // Creo una variable booleana para mostrar el registro, este será falso porque quiero que parta desactivado
+      mostrarRegistro: false,
+    };
+  },
   components: {
     LogIn,
     Registro,
+  },
+  methods: {
+    // Creo la función o método que cambiara los estados de las booleanas
+    mostrarFormulario() {
+      this.mostrarLogIn = !this.mostrarLogIn;
+      this.mostrarRegistro = !this.mostrarRegistro;
+    },
   },
 };
 </script>
