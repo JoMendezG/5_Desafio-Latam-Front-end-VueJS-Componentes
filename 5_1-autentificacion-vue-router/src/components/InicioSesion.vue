@@ -1,6 +1,6 @@
 <template>
   <div class="LogIn" :class="{ propShowLogIn }">
-    <h3>Iniciar Sesión</h3>
+    <h3 class="text-start">Iniciar Sesión</h3>
     <form class="form-floating">
       <input
         type="email"
@@ -22,10 +22,12 @@
       <label for="floatingInputValue">Contraseña</label>
     </form>
 
-    <button type="button" class="btn btn-warning">Iniciar Sesión</button>
-    <p class="small fw-bold mt-2 pt-1 mb-0">
+    <button type="button" class="btn btn-warning d-block">
+      Iniciar Sesión
+    </button>
+    <p class="small fw-bold mt-2 pt-1 mb-0 text-start">
       ¿No tienes una cuenta?
-      <a class="link-info" href="">Registrate</a>
+      <a @click.prevent="apagarLogIn" class="link-info" href="">Registrate</a>
     </p>
   </div>
 </template>
@@ -34,7 +36,12 @@
 export default {
   props: ["propShowLogIn"],
 
-  methods: {},
+  methods: {
+    apagarLogIn() {
+      // PResionar es el evento del emit
+      this.$emit("presionar");
+    },
+  },
 };
 </script>
 

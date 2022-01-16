@@ -6,10 +6,13 @@
 
     <div class="der">
       <!-- Señalo que mi Registro tendrá una prop llamada "propShowRegistro" que almacena la booleana mostrarRegistro -->
-      <Registro :propShowRegistro="mostrarRegistro"></Registro>
+      <Registro
+        @presionarRegistro="mostrarFormulario"
+        :propShowRegistro="mostrarRegistro"
+      ></Registro>
       <LogIn
+        @presionar="mostrarFormulario"
         :propShowLogIn="mostrarLogIn"
-        :propMetodo="mostrarFromulario"
       ></LogIn>
     </div>
   </div>
