@@ -9,21 +9,25 @@
         id="floatingInputValue"
         placeholder="example@example.com"
         value="example@example.com"
+        v-model="crear.usuario"
       />
       <label for="floatingInputValue">Correo electrónico</label>
     </form>
 
     <form class="form-floating">
       <input
-        type="email"
+        type="password"
         class="form-control"
         id="floatingInputValue"
         value=""
+        v-model="crear.contrasena"
       />
       <label for="floatingInputValue">Contraseña</label>
     </form>
 
-    <button type="button" class="btn btn-warning d-block">Crear Cuenta</button>
+    <button @click="registrar" type="button" class="btn btn-warning d-block">
+      Crear Cuenta
+    </button>
 
     <p class="small fw-bold mt-2 pt-1 mb-0 text-start">
       ¿Ya tienes una cuenta?
@@ -35,13 +39,28 @@
 </template>
 
 <script>
+import { registrarUsuario } from "../firebase/firebase";
+
 export default {
+  data() {
+    return {
+      crear: {
+        usuario: "",
+        contrasena: "",
+      },
+    };
+  },
+
   // Llamo a la prop en braquets
   props: ["propShowRegistro"],
 
   methods: {
     apagarRegistro() {
       this.$emit("presionarRegistro");
+    },
+
+    registrar() {
+      registrarUsuario(this.crear.usuario, this.crear.contrasena);
     },
   },
 };
