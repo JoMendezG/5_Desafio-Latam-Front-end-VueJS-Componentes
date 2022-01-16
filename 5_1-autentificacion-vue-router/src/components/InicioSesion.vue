@@ -8,21 +8,23 @@
         id="floatingInputValue"
         placeholder="example@example.com"
         value="example@example.com"
+        v-model="ingresar.usuario"
       />
       <label for="floatingInputValue">Correo electrónico</label>
     </form>
 
     <form class="form-floating">
       <input
-        type="email"
+        type="password"
         class="form-control"
         id="floatingInputValue"
         value=""
+        v-model="ingresar.contrasena"
       />
       <label for="floatingInputValue">Contraseña</label>
     </form>
 
-    <button type="button" class="btn btn-warning d-block">
+    <button @click="logIn" type="button" class="btn btn-warning d-block">
       Iniciar Sesión
     </button>
     <p class="small fw-bold mt-2 pt-1 mb-0 text-start">
@@ -33,13 +35,40 @@
 </template>
 
 <script>
+import { iniciarSesion } from "../firebase/firebase";
 export default {
+  data() {
+    return {
+      ingresar: {
+        usuario: "",
+        contrasena: "",
+      },
+    };
+  },
+
   props: ["propShowLogIn"],
 
   methods: {
     apagarLogIn() {
       // PResionar es el evento del emit
       this.$emit("presionar");
+    },
+
+    logIn() {
+      iniciarSesion(
+        this.ingresar.usuario,
+        this.ingresar.contrasena,
+        this.logInIncorrecto
+      );
+    },
+
+    logInIncorrecto(error) {
+      if (error === "auth/invalid-email") {
+        alert("Correo Incorrecto");
+      }
+      if (error == "auth/wrong-password") {
+        alert("Contraseña erronea");
+      }
     },
   },
 };
