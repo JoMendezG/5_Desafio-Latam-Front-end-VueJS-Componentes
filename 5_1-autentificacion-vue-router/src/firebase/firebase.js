@@ -11,12 +11,13 @@ const auth = getAuth();
 // https://firebase.google.com/docs/auth/web/start
 // Registra usuarios nuevos
 
-const registrarUsuario = (email, password) => {
+const registrarUsuario = (email, password, callback) => {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
       console.log(user);
+      callback();
     })
     .catch((error) => {
       const errorCode = error.code;

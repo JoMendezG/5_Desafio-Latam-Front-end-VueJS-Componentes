@@ -60,7 +60,17 @@ export default {
     },
 
     registrar() {
-      registrarUsuario(this.crear.usuario, this.crear.contrasena);
+      registrarUsuario(
+        this.crear.usuario,
+        this.crear.contrasena,
+        this.usuarioRegistrado
+      );
+    },
+
+    usuarioRegistrado() {
+      alert("Te has registrado con éxito");
+      this.crear.usuario = "";
+      this.crear.contrasena = "";
     },
   },
 };
