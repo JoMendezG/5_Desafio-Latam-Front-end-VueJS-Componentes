@@ -1,18 +1,22 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h2>Log in exitoso</h2>
+    <button @click="salirSesion">Salir</button>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+
+import { logout } from "../firebase/firebase";
 
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
-}
+  name: "Home",
+
+  methods: {
+    salirSesion() {
+      logout();
+    },
+  },
+};
 </script>

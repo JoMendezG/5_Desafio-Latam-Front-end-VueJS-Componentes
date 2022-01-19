@@ -5,6 +5,8 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
 } from "firebase/auth";
 
 initializeApp(firebaseConfig);
@@ -49,4 +51,36 @@ const iniciarSesion = (email, password, callback) => {
     });
 };
 
-export { registrarUsuario, iniciarSesion };
+// Observador
+// https://firebase.google.com/docs/auth/web/start
+// Configura un observador de estado de autenticación y obtén datos del usuario
+const observador = (to, next) => {
+  onAuthStateChanged(auth, (user) => {
+    // Si el usuario esta logeado
+    if (user) {
+      if (to.path === "/") {
+        next("/home");
+      } else {
+        next();
+      }
+      // Si no esta logeado
+    } else {
+      if (to.path !== "/") {
+        next("/");
+      } else {
+        next();
+      }
+    }
+  });
+};
+
+const logout = () => {
+  signOut(auth)
+    .then((user) => {
+      console.log(user);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+export { registrarUsuario, iniciarSesion, observador, logout };
