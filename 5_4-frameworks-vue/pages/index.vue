@@ -16,7 +16,9 @@
 
 <script>
 import cards_vuetify from "../../5_3-layout-vuetify/src/components/cards_vuetify.vue";
+
 import Personajes from "../personajes";
+
 export default {
   components: { cards_vuetify },
   name: "IndexPage",
@@ -29,3 +31,5 @@ export default {
   },
 };
 </script>
+
+<style></style>
