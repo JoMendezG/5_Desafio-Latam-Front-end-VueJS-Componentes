@@ -1,4 +1,4 @@
-# - Creación de autentificación con Vue Router
+# Creación de autentificación con Vue Router
 
 ## Descripción
 
