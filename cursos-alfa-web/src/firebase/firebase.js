@@ -58,13 +58,16 @@ const observador = (to, next) => {
   onAuthStateChanged(auth, (user) => {
     // Si el usuario esta logeado
     if (user) {
+        // Estoy logeado y voy a la ruta login 
       if (to.path === "/") {
+        //   me lleva al principal ya que estoy logeado
         next("/Cursos");
+        // De lo contrario voy a cualquier pagina ya que estoy logeado
       } else {
         next();
       }
       // Si no esta logeado
-    } else {
+    } else { 
       if (to.path !== "/") {
         next("/");
       } else {

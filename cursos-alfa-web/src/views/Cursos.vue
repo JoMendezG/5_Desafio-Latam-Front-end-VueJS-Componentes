@@ -36,6 +36,9 @@
   </v-container>
 </template>
 <script>
+// Importo la base de datos de json
+import db from "../../"
+
 export default {
   data() {
     return {

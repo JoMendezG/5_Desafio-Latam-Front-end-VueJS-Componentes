@@ -17,7 +17,7 @@
           >
         </v-row>
         <v-row align="center" justify="center">
-          <router-link to="/registro" class="mt-3">Registro</router-link>
+          <router-link to="/Registro" class="mt-3">Registro</router-link>
         </v-row>
       </v-col>
     </v-row>
