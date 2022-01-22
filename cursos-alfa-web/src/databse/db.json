@@ -2,19 +2,20 @@
     {
         "codigo": "C00101",
         "Nombre": "HTML Básico",
-        "Estado (Terminado)": "true",
+        "Completado": "Si",
         "Costo": "10000",
         "Duración": "1 mes",
         "Descripción": "Curso básico de HTML para principiantes.",
         "Cupos": "35",
         "Inscritos": "0",
         "Imagen": "https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png"
+        
 
     },
     {
         "codigo": "C00102",
         "Nombre": "CSS para principiantes",
-        "Estado (Terminado)": "false",
+        "Completado": "No",
         "Costo": "10000",
         "Duración": "1 mes",
         "Descripción": "Aprendiendo estilos con CSS desde el nivel más básico.",
@@ -26,7 +27,7 @@
     {
         "codigo": "C00201",
         "Nombre": "JavaScript básico de 0 a 100",
-        "Estado (Terminado)": "true",
+        "Completado": "Si",
         "Costo": "20000",
         "Duración": "2 mes",
         "Descripción": "Programando para la web con JavaScript.",
@@ -38,7 +39,7 @@
     {
         "codigo": "C00202",
         "Nombre": "JavaScript Avanzado ",
-        "Estado (Terminado)": "false",
+        "Completado": "No",
         "Costo": "30000",
         "Duración": "2 mes",
         "Descripción": "Curso con las nuevas actualizaciones de JavaScript.",
@@ -50,7 +51,7 @@
     {
         "codigo": "C00301",
         "Nombre": "VueJS de 0 a 100",
-        "Estado (Terminado)": "false",
+        "Completado": "No",
         "Costo": "85500",
         "Duración": "5 mes",
         "Descripción": "Framework Vue.js desde principiante a avanzado.",
@@ -62,7 +63,7 @@
     {
         "codigo": "C00302",
         "Nombre": "Estilos con SASS ",
-        "Estado (Terminado)": "false",
+        "Completado": "No",
         "Costo": "45000",
         "Duración": "1 mes",
         "Descripción": "Mejorando los estilos con mayor potencia mediante SASS",

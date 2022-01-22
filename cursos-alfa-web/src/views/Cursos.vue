@@ -2,30 +2,42 @@
   <v-container>
     <h1 class="my-3 text-center">Lista de cursos</h1>
     <v-row>
-      <v-col cols="4" v-for="(course, index) in courses" :key="index">
+      <v-col cols="4" v-for="(cursos, index) in db" :key="index">
         <v-card>
-          <v-img
-            height="200px"
-            src="https://cdn.pixabay.com/photo/2020/07/12/07/47/bee-5396362_1280.jpg"
-          >
-          </v-img>
-          <div class="m-5">Javascript Avanzado</div>
+          <v-img height="200px" :src="cursos.Imagen"> </v-img>
 
           <v-card-text>
+            <h2 class="font-weight-bold ml-8 mb-2 mt-2">{{ cursos.Nombre }}</h2>
+
             <div class="font-weight-bold ml-8 mb-2">Información</div>
 
             <v-timeline align-top dense>
-              <v-timeline-item
-                v-for="message in messages"
-                :key="message.time"
-                :color="message.color"
-                small
-              >
+              <v-timeline-item small class="verde">
                 <div>
                   <div class="font-weight-normal">
-                    <strong>{{ message.from }}</strong> @{{ message.time }}
+                    Costo: <strong>{{ cursos.Costo }}</strong>
                   </div>
-                  <div>{{ message.message }}</div>
+                  <div>Duración: {{ cursos.Duración }}</div>
+                </div>
+              </v-timeline-item>
+              <v-timeline-item small>
+                <div>
+                  <div class="font-weight-normal">
+                    Cupos: <strong>{{ cursos.Cupos }}</strong>
+                  </div>
+                  <div>Completado: {{ cursos.Completado }}</div>
+                </div>
+              </v-timeline-item>
+              <v-timeline-item small>
+                <div>
+                  <div class="font-weight-normal">Fecha de Registro:</div>
+                  <div>Consultar!</div>
+                </div>
+              </v-timeline-item>
+              <v-timeline-item small>
+                <div>
+                  <div class="font-weight-normal">Descripción:</div>
+                  <div>{{ cursos.Descripción }}</div>
                 </div>
               </v-timeline-item>
             </v-timeline>
@@ -37,33 +49,19 @@
 </template>
 <script>
 // Importo la base de datos de json
-import db from "../../"
+import db from "../databse/db.json";
 
 export default {
   data() {
     return {
-      messages: [
-        {
-          from: "You",
-          message: `Sure, I'll see you later.`,
-          time: "10:42am",
-          color: "deep-purple lighten-1",
-        },
-        {
-          from: "John Doe",
-          message: "Yeah, sure. Does 1:00pm work?",
-          time: "10:37am",
-          color: "green",
-        },
-        {
-          from: "You",
-          message: "Did you still want to grab lunch today?",
-          time: "9:47am",
-          color: "deep-purple lighten-1",
-        },
-      ],
-      courses: [1, 2, 3, 4],
+      db: db,
     };
   },
 };
 </script>
+
+<style>
+div.v-card__text {
+  background-color: #f2f2f2;
+}
+</style>
