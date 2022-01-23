@@ -15,11 +15,15 @@
       <v-list nav dense>
         <v-list-item-group active-class="teal--text text--darken-4">
           <v-list-item>
-            <v-list-item-title color="#ffffff">Inicio</v-list-item-title>
+            <v-list-item-title>
+              <router-link class="link" to="/Cursos">Cursos</router-link>
+            </v-list-item-title>
           </v-list-item>
 
           <v-list-item>
-            <v-list-item-title>Buscar</v-list-item-title>
+            <v-list-item-title>
+              <router-link class="link" to="/Admin">Administración</router-link>
+            </v-list-item-title>
           </v-list-item>
 
           <v-list-item>
@@ -46,4 +50,9 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.link {
+  text-decoration: none;
+  color: black;
+}
+</style>

@@ -12,7 +12,7 @@
             <div class="font-weight-bold ml-8 mb-2">Información</div>
 
             <v-timeline align-top dense>
-              <v-timeline-item small class="verde">
+              <v-timeline-item small color="purple">
                 <div>
                   <div class="font-weight-normal">
                     Costo: <strong>{{ cursos.Costo }}</strong>
@@ -20,7 +20,7 @@
                   <div>Duración: {{ cursos.Duración }}</div>
                 </div>
               </v-timeline-item>
-              <v-timeline-item small>
+              <v-timeline-item small color="green">
                 <div>
                   <div class="font-weight-normal">
                     Cupos: <strong>{{ cursos.Cupos }}</strong>
@@ -28,13 +28,13 @@
                   <div>Completado: {{ cursos.Completado }}</div>
                 </div>
               </v-timeline-item>
-              <v-timeline-item small>
+              <v-timeline-item small color="purple">
                 <div>
                   <div class="font-weight-normal">Fecha de Registro:</div>
                   <div>Consultar!</div>
                 </div>
               </v-timeline-item>
-              <v-timeline-item small>
+              <v-timeline-item small color="green">
                 <div>
                   <div class="font-weight-normal">Descripción:</div>
                   <div>{{ cursos.Descripción }}</div>
