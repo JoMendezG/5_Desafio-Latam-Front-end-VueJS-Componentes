@@ -21,7 +21,6 @@
                   <v-col cols="12" sm="12" md="12">
                     <v-text-field
                       required
-                      type="number"
                       v-model="cursos.Codigo"
                       label="Codigo del curso"
                     ></v-text-field>
@@ -99,22 +98,26 @@
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn color="blue darken-1" text @click="close"> Cancel </v-btn>
-              <v-btn color="blue darken-1" text @click="save"> Save </v-btn>
+              <v-btn color="blue darken-1" text @click="crearCurso">
+                Crear Curso
+              </v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
         <v-dialog v-model="dialogDelete" max-width="500px">
           <v-card>
+            <!-- Mensaje que se despliega al querer eliminar un curso -->
             <v-card-title class="text-h5"
-              >Are you sure you want to delete this item?</v-card-title
+              >¿Estas seguro de querer borrar el curso?</v-card-title
             >
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn color="blue darken-1" text @click="closeDelete"
                 >Cancel</v-btn
               >
+              <!-- Botón que borra el curso directamente -->
               <v-btn color="blue darken-1" text @click="deleteItemConfirm"
-                >OK</v-btn
+                >Borrar</v-btn
               >
               <v-spacer></v-spacer>
             </v-card-actions>
@@ -124,7 +127,8 @@
     </template>
     <template v-slot:item.actions="{ item }">
       <v-icon small class="mr-2" @click="editItem(item)"> mdi-pencil </v-icon>
-      <v-icon small @click="borrarCurso"> mdi-delete </v-icon>
+      <!-- Icono de la basura aquí se queda este método deleteItem -->
+      <v-icon small @click="deleteItem"> mdi-delete </v-icon>
     </template>
     <template v-slot:no-data>
       <v-btn color="primary" @click="initialize"> Reset </v-btn>
@@ -210,7 +214,7 @@ export default {
 
   methods: {
     // Aquí van todos los campos a subir
-    crearUsuarioCallback() {
+    crearCursoCallback() {
       alert("Curso creado con exito");
       this.cursos.Codigo = "";
       this.cursos.Curso = "";
@@ -224,30 +228,34 @@ export default {
       this.cursos.Foto = "";
     },
 
-    // Metodo crear usuario que va a firebase
-    crearUsuario() {
-      agregarDatos(this.cursos, this.crearUsuarioCallback);
+    // Metodo crear curso que va a firebase
+    crearCurso() {
+      agregarDatos(this.cursos, this.crearCursoCallback);
       this.$store.dispatch("getData");
+      this.close();
     },
 
-    borrarCurso() {
-      borrarDatos(this.cursos, this.crearUsuarioCallback);
+    // Creamos un método de borrar curso linkeado al store
+    // TOMA EL ID
+    borrarCurso(id) {
+      this.$store.dispatch("borrarCurso", id);
     },
 
-    editItem(item) {
-      this.editedIndex = this.desserts.indexOf(item);
-      this.cursos = Object.assign({}, item);
-      this.dialog = true;
-    },
-
+    // Este método va en el basurero
     deleteItem(item) {
-      this.editedIndex = this.desserts.indexOf(item);
+      this.editedIndex = this.cursosData.indexOf(item);
       this.cursos = Object.assign({}, item);
       this.dialogDelete = true;
     },
 
+    // Aquí borramos el curso
+    // Usamos el método que viene del CRUD
     deleteItemConfirm() {
-      this.desserts.splice(this.editedIndex, 1);
+      this.cursosData.splice(this.editedIndex, 1);
+      // Agrego mi función de borrar datos de firestore
+      // Tomo el id de los cursos
+      borrarDatos(this.cursos.id, this.borrarCurso);
+      this.$store.dispatch("getData");
       this.closeDelete();
     },
 
@@ -269,9 +277,9 @@ export default {
 
     save() {
       if (this.editedIndex > -1) {
-        Object.assign(this.desserts[this.editedIndex], this.cursos);
+        Object.assign(this.cursosData[this.editedIndex], this.cursos);
       } else {
-        this.desserts.push(this.cursos);
+        this.cursosData.push(this.cursos);
       }
       this.close();
     },

@@ -19,6 +19,7 @@ import {
   getDocs,
   doc,
   deleteDoc,
+  setDoc,
 } from "firebase/firestore";
 // import { async } from "@firebase/util";
 
@@ -64,9 +65,27 @@ const listarDatos = async (callback) => {
 
 // Borrar documentos
 // https://firebase.google.com/docs/firestore/manage-data/delete-data?hl=es
-const borrarDatos = async (data, callback) => {
-  await deleteDoc(doc(db, col), data);
-  callback();
+const borrarDatos = async (id) => {
+  try {
+    await deleteDoc(doc(db, col, id));
+    alert("Curso Borrado");
+  } catch (e) {
+    console.log("Error", e);
+  }
 };
 
-export { agregarDatos, listarDatos, borrarDatos };
+// Actualizar datos
+const actualizarData = async (id, data) => {
+  try {
+    console.log("DATA", id, data);
+    await setDoc(doc(db, col, id), data);
+    alert("Datos actualizados");
+
+    // Agregar callback aca
+  } catch (e) {
+    console.log("Error", e);
+    alert("Error agregando documento");
+  }
+};
+
+export { agregarDatos, listarDatos, borrarDatos, actualizarData };
