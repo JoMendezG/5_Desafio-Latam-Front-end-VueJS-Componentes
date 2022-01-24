@@ -5,6 +5,7 @@ import Login from "../views/LoginUsuario.vue";
 import Registro from "../views/RegistroUsuario.vue";
 import Admin from "../views/Admin.vue";
 import Cursos from "../views/Cursos.vue";
+import EditarCurso from "../views/EditarCurso.vue";
 
 import { observador } from "../firebase/firebase";
 
@@ -25,6 +26,11 @@ const routes = [
     path: "/Admin",
     name: "Admin",
     component: Admin,
+  },
+  {
+    path: "/Admin/:id",
+    name: "Editar",
+    component: EditarCurso,
   },
   {
     path: "/Cursos",

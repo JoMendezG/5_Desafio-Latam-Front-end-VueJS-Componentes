@@ -12,6 +12,11 @@ export default new Vuex.Store({
     loading: true,
     email: "",
   },
+  getters: {
+    filtrarCurso: (state) => (id) => {
+      return state.cursosDataFirebase.filter((course) => course.id === id)[0];
+    },
+  },
   mutations: {
     getCourses(state, data) {
       state.cursosDataFirebase = data;
@@ -27,6 +32,10 @@ export default new Vuex.Store({
 
     eraseEmail(state) {
       state.email = "";
+    },
+
+    actualizarCurso(state, data) {
+      state.cursosDataFirebase[data.index] = data.cursosDataFirebase;
     },
   },
   actions: {

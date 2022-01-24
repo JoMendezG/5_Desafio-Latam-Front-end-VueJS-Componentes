@@ -59,7 +59,7 @@ const observador = (to, next) => {
     // Si el usuario esta logeado
     if (user) {
       // Estoy logeado y voy a la ruta login
-      if (to.path === "/" || to.path === "/Registro") {
+      if (to.path === "/") {
         //   me lleva al principal ya que estoy logeado
         next("/Cursos");
         // De lo contrario voy a cualquier pagina ya que estoy logeado
@@ -68,7 +68,7 @@ const observador = (to, next) => {
       }
       // Si no esta logeado
     } else {
-      if (to.path !== "/" && to.path === "/Registro") {
+      if (to.path !== "/" && to.path !== "/Registro") {
         next("/");
       } else {
         next();

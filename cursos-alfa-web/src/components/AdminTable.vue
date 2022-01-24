@@ -126,7 +126,10 @@
       </v-toolbar>
     </template>
     <template v-slot:item.actions="{ item }">
-      <v-icon small class="mr-2" @click="editItem(item)"> mdi-pencil </v-icon>
+      <!-- llevame a admin/id del curso -->
+      <v-icon small class="mr-2" @click="$router.push(`/Admin/${item.id}`)">
+        mdi-pencil
+      </v-icon>
       <!-- Icono de la basura aquí se queda este método deleteItem -->
       <v-icon small @click="deleteItem"> mdi-delete </v-icon>
     </template>

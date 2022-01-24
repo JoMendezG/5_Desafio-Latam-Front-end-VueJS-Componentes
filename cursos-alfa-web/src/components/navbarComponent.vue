@@ -5,9 +5,9 @@
       <v-toolbar-title>Cursos AlfaWeb</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn @click="salirSesion" elevation="0" color="primary"
-          >Chao world!!</v-btn
-        >
+        <v-btn elevation="0" color="primary">
+          <v-icon @click="salirSesion">mdi-logout</v-icon>
+        </v-btn>
       </v-toolbar-items>
     </v-app-bar>
 
@@ -24,10 +24,6 @@
             <v-list-item-title>
               <router-link class="link" to="/Admin">Administración</router-link>
             </v-list-item-title>
-          </v-list-item>
-
-          <v-list-item>
-            <v-list-item-title>Acerca de</v-list-item-title>
           </v-list-item>
         </v-list-item-group>
       </v-list>
